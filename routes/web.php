@@ -14,6 +14,7 @@ use App\Http\Controllers\ReorderPointsController;
 use App\Http\Controllers\inventoryitemsController;
 use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\FormController; //nadagdag
+use App\Http\Controllers\RestaurantReports\CompleteTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('reorder-points', [ReorderPointsController::class,'index']);
     Route::post('submit-reorder/id={id}', [ReorderPointsController::class,'submitReorder']);
     Route::get('reorder-status', [ReorderPointsController::class,'reorderStatusIndex']);
+
+    //RESTAURANT REPORTS
+    Route::get('complete-transaction', [CompleteTransactionController::class, 'index']);
+    Route::get('stripe-payments', [CompleteTransactionController::class, 'stripePayments']);
     
 });
 
